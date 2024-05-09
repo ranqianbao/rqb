@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>实验二 javascript常用对象的应用</title>
+	</head>
+	<body>
+		<script>
+			//219971125冉钱宝
+			//1.判断数据类型转换结果
+			//(1) Number()
+			console.log(Number(true),Number(null),+undefined);
+			//结果为：1,0，NaN
+			//(2) Boolean()
+			console.log(Boolean('100'),Boolean(100),Boolean(null),!!undefined);
+			//结果为：true,true,false,false
+			//(3)parseInt() 字符串转换为整数。它会解析字符串中的数字部分，并返回整数值。
+		    //如果字符串的开头不是数字，则返回 NaN。parseInt() 函数还可以接受第二个参数，用于指定解析时的进制。
+			console.log(parseInt(123.6),parseInt(0b1011011),parseInt(0X2A),parseInt(0X2A,8));
+			//结果为：123,91,42,34
+		    //(4)parseFloat() 将字符串转换为浮点数。解析字符串数字部分，并返回浮点数值。
+			//parseFloat() 可以解析包含小数点的数字。如果字符串的开头不是数字，则返回 NaN。
+			console.log(parseFloat('123.6'),parseFloat('100px'),parseFloat(010));
+			//结果为：123.6,100，8
+			//(5)eval() 将传入的字符串当作有效的 JavaScript 表达式来执行，并返回表达式的结果。
+			console.log(eval('87*99+2'));
+			//结果为：8615
+			//(6)isNaN() ，如果传入的值是 NaN，则返回 true；否则返回 false。除了检查 NaN，
+			//isNaN() 函数还会尝试将传入的参数转换为数字，如果无法转换为数字，则也会返回 true。
+			console.log(isNaN(null),isNaN('123'),isNaN('abc'),isNaN('a1b2c3'));
+			//结果为：false,false,true,true
+			
+			//2.Array数组的创建
+			//219971125冉钱宝
+				//(1)运行代码，写运行结果
+				var arr1 = [];
+				console.log(arr1,arr1.length);
+				//结果为：[],0
+				var arr2 = [1,2,3];
+				console.log(arr2[0],arr2.length);
+				//结果为:1,3
+				var arr3 = new Array();
+				console.log(arr3[1],arr3.length);
+				//结果为：undefined，0
+				
+				//(2)去掉数组arr2的第一个元素
+				var arr2 = [1, 2, 3];
+				arr2.shift();
+				console.log(arr2[0], arr2.length);
+                //结果为:2,2
+				//原因：arr2.shift() 会移除数组 arr2 的第一个元素
+			//3.使用 new Date()获取当前的日期和时间，写出代码显示目前是几点几分
+				var now = new Date();
+				var hour = now.getHours();
+				var minute = now.getMinutes();
+				console.log(hour + "：" + minute);
+			 
+		    //4.RegExp正则表达式
+			//219971125冉钱宝
+				//(1) 运行代码，体验使用字面量方式创建，写运行结果
+				var reg1 = /^\d{4}$/;
+				//^ 匹配字符串的开头，d{4}匹配四个数字，$匹配字符串的结尾。\d表示匹配数字字符。
+					console.log(
+					reg1.test('1234'),
+					reg1.test('1a34'),
+					reg1.test('12345')
+				)
+				//结果为：true,false,false
+			   //(2)运行代码，体验用构造函数方式创建，写运行结果
+					var reg2 = new RegExp("^[sp]\\d{1,4}$","i");
+					//^匹配字符串的开头，[sp]匹配一个字符可以是s或者p，\d{1,4}匹配一个到四个数字，$匹配字符串的结尾。参数"i"表示忽略大小写。
+					console.log(
+					reg2.test('p123'),
+					reg2.test('1234'),
+					reg2.test('S10')
+					)
+					//结果为：true，false，true
+				//(3)编写一个能效验手机号是否为中国电信的正则表达式，写出代码和测试案例。
+					var zgdx = /^(133|153|180|189)\d{8}$/;
+					//^匹配字符串开头，开头可以是133,153,180,189  \d{8}匹配八个数字，$匹配字符串的结尾。
+					
+					// 测试案例
+					console.log(zgdx.test('13312345678')); 
+					// 结果为：true
+					console.log(zgdx.test('15387654321')); 
+					// 结果为：true
+					console.log(zgdx.test('14312345678')); 
+					// 结果为：false
+					console.log(zgdx.test('1361234567')); 
+					// 结果为：false
+					
+					//219971125冉钱宝
+			//5.(1)目前有一个QQ邮箱的字符串，需要提取其QQ号码，编写代码和测试案例
+					var QQ = /\b\d{5,}\b/g;
+					//\b 表示单词边界，\d{5,}匹配至少5位数字，\b再次单词边界。g全局匹配可以匹配多个QQ号码。
+					// 测试案例
+					var email = 'example@qq.com, another@qq.com, qq:12345, QQ:2198751713';
+					var qq = email.match(QQ);
+					//使用 String对象的match方法匹配出其中的 QQ 号码
+					console.log(qq); 
+					//结果为输出 ["12345", "2198751713"]
+			//6.Math对象实现编写代码实现随机产生1,2,3,中的任意一个整数，写出测试案例
+					function Number() {
+					    return Math.floor(Math.random() * 3) + 1;
+					}
+					//原因：Math.random()函数会生成一个0到1之间的随机小数，然后将其乘以3，得到一个0到3之间的随机小数，
+					//再使用Math.floor()函数取整，最后加1得到1, 2, 3中的一个整数。
+					// 测试案例
+					console.log(Number());
+					//结果为1
+			//7.思考代码结果，并运行验证
+			//219971125冉钱宝
+					var x = 1;
+					function A(y){
+						var x = 2;
+						function B(z){
+							console.log(x+y+z);
+							//x是指函数A内部的局部变量x，y和z分别是A和B函数的参数。
+						}
+						return B;
+					}
+					var C = A(2);
+					
+					C(3);
+					//结果为：7
+					//原因：调用函数C，传入参数3。这里的C实际上就是函数B，所以会执行函数B内的console.log(x + y + z);，
+					//其中x为2（来自函数A的局部变量），y为2（传入函数A的参数），z为3（传入函数C的参数），所以最终输出结果为2+2+3=7。
+
+		</script>
+	</body>
+</html>

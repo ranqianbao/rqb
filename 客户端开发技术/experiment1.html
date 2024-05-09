@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>实验一</title>
+		<!-- 219971125冉钱宝 -->
+	</head>
+	<body>
+		<script>
+			"use strict";
+			//7.运行代码，记录结果和原因
+			
+			// num = 100;
+			//运行结果：num is not defined
+			//原因：在严格模式下，必须先定义在赋值使用
+			
+			//8.自行编写严格模式下错误代码,记录代码并说明错误原因
+			// var arguments = 1;
+			//运行结果：Unexpected eval or arguments in strict mode
+			//原因：严格模式下arguments不能直接赋值
+			
+			//9.添加try...catch语句块，友好显示错误信息
+			// try {
+			//     var arguments = 1;
+			// } catch (error) {
+			//     console.error("An error occurred: " + error.message);
+			// }
+			//运行结果：Unexpected eval or arguments in strict mode
+
+			// 1.编写代码调试函数
+			function getSum(num1,num2){
+				var sum = num1 + num2;
+				console.log(num1+"+"+num2+"="+(num1+num2));
+			}
+			getSum();//调试代码
+			//运行结果为： undefined+undefined=NaN
+			
+			//2.运行代码，记录结果或错误原因
+			//原代码：
+			// getProduct(2,4);
+			// var getProduct = function (num1, num2){
+			// 	console.log(num1+"*"+num2+"="+num1*num2);
+			// }
+			// getProduct();//调试代码
+			//错误原因：getProduct is a not function (getProduct是一个没有定义的函数)
+			
+			//修改后代码
+			var getProduct = function (num1, num2){
+				console.log(num1+"*"+num2+"="+num1*num2);
+			}
+			getProduct(2,4);
+			getProduct();//调试代码
+			//运行结果为： 2*4=8
+			
+			//3.思考输出结果，并运行记录结果
+			// 219971125冉钱宝
+			var a = 100;
+			function test(){
+				console.log(a)
+				a = 10;
+				console.log(a);
+			}
+			test();
+			console.log(a);
+			//运行结果为： 100  10  10 
+			//原因：最开始a定义为100，故打印出来为100，在函数内部将a的值改为10后，打印出结果都为10.
+			
+			//4.思考输出结果，并运行记录结果
+			var a = 10;
+			fun1();
+			function fun1(){
+				var b = 20;
+				console.log(a);
+				console.log(b);
+				var a = 30;
+			}
+			//运行结果为：undefined   20
+			//原因：变量提升将变量声明提升到函数作用域的顶部，但不会提升赋值，故在函数内部打印时，a为undefined，b为20
+			
+			//5.运行代码，查看是否报错
+			//219971125冉钱宝
+			function fun2(a,b){
+				console.log(arguments[0]);
+				console.log(arguments[1]);
+				console.log(arguments[2]);
+			}
+			fun2(1,2,3);
+			//运行结果为：1 2 3 
+			//原因：fun2函数内部使用了arguments对象来访问传递给函数的参数。在函数定义中只有两个形式参数a和b，但实际访问到所有传递给函数的参数。
+            //当调用fun2(1,2,3)时，实际上传递了3个参数：1、2、3。在函数内部分别访问了这三个参数，所以打印出来的结果分别是1 2 3。
+			
+			//6.用for...in的循环语句打印输出fun2调用时的参数，记录代码
+			function fun2(a, b){
+			    console.log(arguments[0]);
+			    console.log(arguments[1]);
+			    console.log(arguments[2]);
+			
+			    for (var c in arguments) {
+			        console.log(arguments[c]);
+			    }
+			}
+			fun2(1, 2, 3);
+			//运行结果为：1 2 3 1 2 3 1 2 3
+			//原因：使用for...in循环遍历arguments对象，i会依次取到0、1、2，对应着arguments对象中的索引，通过arguments[i]来访问每个参数的值并打印出来。
+ 
+		</script>
+	</body>
+</html>

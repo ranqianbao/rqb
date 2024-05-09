@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>让坦克开起来</title>
+    <style type="text/css">
+        input{font-size:26px;margin-top: 20px;}
+        body{background-image: url(img/grassland.png);}
+        #mytank{position: absolute;left:10px;top:100px}
+    </style>
+</head>
+<body>
+	//219971125冉钱宝
+    <img id="mytank"  style="margin-top: 10px;margin-left: 10px;" src="img/right.png"/>
+    <!-- img元素表示一个图像元素，id为mytank，src属性定义了图像的路径，初始图片为img/right.png（坦克向右的图片）。 -->
+    <script>
+			const tank = document.querySelector("#mytank")
+			// console.log(tank)
+			// 获取整个页面html
+			const html = document.querySelector('html')
+			let y = 0
+			let x = 0
+			html.addEventListener('keydown',(e)=>{
+				console.log(e.keyCode)
+				if(e.keyCode == '68') {
+					tank.setAttribute('src','./img/right.png')
+					// 按下D,坦克右
+					x++
+					console.log(x)
+					//限制边界最右边
+					if(x >= 162) {
+						x = 162 
+					}
+					tank.style.marginLeft = `${10*x}px`
+				}else if(e.keyCode =='65') {
+					tank.setAttribute('src','./img/left.png')
+					// 按下A,坦克左
+					x--
+					console.log(x)
+					//限制边界最左边
+					if(x <=-1) {
+						x=-1
+					}
+					tank.style.marginLeft = `${10*x}px`
+				}else if(e.keyCode =='83') {
+					tank.setAttribute('src','./img/down.png')
+					// 按下W,坦克向下
+					y++
+					console.log(y)
+					//限制边界最下边
+					if(y >= 61) {
+						y = 61 
+					}
+					tank.style.marginTop = `${10*y}px`
+				}else if(e.keyCode =='87') {
+					// 按下S,坦克向上
+					tank.setAttribute('src','./img/up.png')
+					y--
+					console.log(y)
+					//限制1边界最上边
+					if(y <= -10) {
+						y = -10
+					}
+					tank.style.marginTop = `${10*y}px`
+				}
+			})
+			//禁用右键
+			document.addEventListener('contextmenu', function(event) {
+			    event.preventDefault();
+			});
+
+
+    </script>
+</body>
+</html>

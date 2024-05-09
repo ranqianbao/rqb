@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BOM编程     浏览器对象模型</title>
+	</head>
+	<body>
+		<script>
+			// 1.window对象是BOM的核心，提供访问浏览器窗口的接口
+				//尺寸
+					console.log(window.innerWidth, window.innerHeight);
+					console.log(window.outerWidth,window.outerHeight);
+				//位置
+					console.log(screenLeft, screenTop);
+					console.log(screenX, screenY);
+					console.log(window.name);
+				//setTimeout(指定时间（毫秒为单位）后执行代码)
+				//serInterval(指定代码，间隔时间)   每间隔一段时间执行一次
+					
+			// 2.navigator对象包含有关访问者浏览器的信息，可以呗用来检测客户端的浏览器配置
+				navigator.appCodeName   //返回浏览器的代码名
+				navigator.appVersion   //返回版本号
+			// 3.screen对象包含有关客户端显示屏幕的信息
+				screen.pixelDepth    //分辨率
+			// 4.history对象包含用户（在浏览器窗口）访问过的URL
+				// history.go()  //下一个页面
+				// history.back() //返回
+			// 5.location对象包含有关当前URL的信息
+				// location.reload()  //刷新
+			// 6.document对象   每一个载入浏览器的HTML文档都会成为document对象
+				//document.referrer //记录跳转之前的来源
+		</script>         
+	</body>   

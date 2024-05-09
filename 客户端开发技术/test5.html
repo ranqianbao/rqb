@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>实验四：制作web页面广告</title>
+    <style>
+        /* 设置广告的基本样式和固定位置 */
+        .left, .right {
+            position: fixed; /* 使用固定定位 */
+            width: 200px;
+            height: 200px;
+            top: 50px; /* 顶部间隔，可以根据需要调整 */
+        }
+        .left {
+            left: 0; /* 左广告贴近页面左边缘 */
+        }
+        .right {
+            right: 0; /* 右广告贴近页面右边缘 */
+        }
+        .rightON {
+            position: fixed; /* 使用固定定位 */
+            width: 200px;
+            height: 200px;
+            bottom: -200px; /* 初始位置在页面底部外面 */
+            right: 0; /* 右下角广告贴近页面右边缘 */
+            transition: bottom 1s ease; /* 添加动画效果 */
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="left" id="left">
+        <img src="img/imge1.jpg" alt="左侧广告"/>
+        <span class="close" id="closeLeft">&times;</span> <!-- 添加关闭按钮 -->
+    </div>
+
+    <div class="right" id="right">
+        <img src="img/imge1.jpg" alt="右侧广告"/>
+        <span class="close" id="closeRight">&times;</span> <!-- 添加关闭按钮 -->
+    </div>
+    
+    
+    <div class="rightON" id="rightON">
+        <img src="img/image2.jpg" alt="右下角活动广告"/>
+        <span class="close" id="closeBottom">&times;</span> <!-- 添加关闭按钮 -->
+    </div>
+
+    <script>
+        // 获取关闭按钮元素
+        var closeLeft = document.getElementById("closeLeft");
+        var closeRight = document.getElementById("closeRight");
+        var closeBottom = document.getElementById("closeBottom");
+        
+        // 获取广告元素
+        var leftAd = document.getElementById("left");
+        var rightAd = document.getElementById("right");
+        var bottomAd = document.getElementById("rightON");
+        
+        // 给左侧广告关闭按钮添加点击事件
+        closeLeft.addEventListener("click", function() {
+            leftAd.style.display = "none";
+        });
+        
+        // 给右侧广告关闭按钮添加点击事件
+        closeRight.addEventListener("click", function() {
+            rightAd.style.display = "none";
+        });
+        
+        // 给右下角广告关闭按钮添加点击事件
+        closeBottom.addEventListener("click", function() {
+            bottomAd.style.bottom = "-200px"; // 将广告元素移出屏幕
+        });
+        
+        // 页面加载完成后，右下角广告缓慢出现的动画效果
+        window.onload = function() {
+            setTimeout(function() {
+                bottomAd.style.bottom = "50px"; // 将广告元素移入屏幕
+            }, 1000); // 1秒后开始动画
+        };
+    </script>
+</body>
+</html>

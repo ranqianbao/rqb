@@ -1,0 +1,42 @@
+<!-- 要求使用带参数的函数改造打印图形的JavaScript代码，实现可以输入任意行数打印三角形和平行四边形，输入时要使用prompt函数来弹出提示框 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>作业2</title>
+		<!-- 219971125冉钱宝 -->
+	</head>
+	<body>
+		<script>
+			function printTriangleAndParallelogram() {
+				var rows = prompt("请输入要打印的行数：");
+				document.write('三角形如下：');
+				document.write('</br>');
+				// 三角形
+				for (var a = 1; a <= rows; a++) {
+					for (var b = a; b <= rows; b++) {
+						document.write('&nbsp;');
+					}
+					for (var c = 1; c <= a; c++) {
+						document.write('* ');
+					}
+					document.write('</br>');
+				}
+				// 平行四边形
+				document.write('平行四边形如下：');
+				document.write('</br>');
+				for (var a = 1; a <= rows; a++) {
+					for (var b = a; b <= rows; b++) {
+						document.write('&nbsp;');
+					}
+					for (var c = 1; c <= rows; c++) {
+						document.write('* ');
+					}
+					document.write('</br>');
+				}
+			}
+			
+			printTriangleAndParallelogram();
+		</script>
+	</body>
+</html>

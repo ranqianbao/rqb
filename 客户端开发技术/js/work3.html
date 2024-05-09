@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数进阶</title>
+	</head>
+	<body>
+		<script>
+			//可以利用typeof来判断数据类型
+			var v1 = 100;
+			console.log(typeof v1)
+			//常见的object类型包括Array，Date，RegExp，String，Math，Function
+			//可以利用instanceof判断什么对象的类型
+			
+			var f1 = new Function("a","b","console.log(a+b);");
+			f1(2,3);
+			//等同于     注意Function是一种引用类型
+			var f2 = function(a,b){
+				console.log(a+b);
+			}
+			f2(2,3);
+			
+			//函数是个对象，所以它可以用作参数
+			var fun = function(arg_fun,num) {
+				arg_fun(num);
+			}
+			var arg1 = function(num){
+				console.log(num + 10);
+			}
+			fun(arg1,10);//结果为20
+			
+			//函数是个对象，所以它可以作为其他函数中的表达式
+			
+			//练习题
+			var fun1 = function(){
+				var num = 100;
+			}
+			var fun2 = fun1;
+			console.log(fun1 == fun2, fun1 == fun2);
+			//结果为：true true
+			
+			//作用域链  JavaScript用链式查找机制来确定谁被访问
+			
+			//执行环境(执行上下文)
+			//1.每个函数运行时都会产生一个执行环境，javascript为每一个执行环境关联了一个变量对象。
+			//2.全局执行环境就是window对象
+			//执行环境案例
+			var scope = "global";
+			
+			function fn1() {
+				return scope;
+			}
+			
+			function fn2() {
+				return scope;
+			}
+			 fn1();
+			 fn2();
+			 
+			 //作用域链案例
+			 
+			 name="lwy";
+			 function t(){
+				 var name="tlwy";
+				 function s(){
+					 var name ="slwy";
+					 console.log(name);
+				 }
+				 function ss(){
+					 console.log(name);
+				 }
+				 s();
+				 ss();
+			 }
+			 t();//结果为slwy tlwy
+			 
+			 //闭包  如何在函数外部读取该函数的局部变量
+			 //闭包定义：javascri的函数可以嵌套在其他函数中定义，这样他们就可以访问他们被定义时所处的作用域中的任何变量
+			 //闭包作用：可以读取函数内部的变量，   可以让某些变量始终保持在内存中，即闭包可以使得他的诞生环境一直存在
+			 //闭包缺点：可以篡改父函数的局部变量，有一定的安全风险     滥用闭包，会导致内存消耗大，网页性能降低
+			 //闭包应用场景：计数器困境
+			 //闭包案例
+			 
+			 function fun(){
+				 var num = 100;
+				 function subfun(){
+					 console.log(num);//subfun函数和num同级，所以可以访问num
+				 }
+				 return subfun;//fun函数的返回值是函数subfun本身
+			 }
+			 var f = fun();
+			 f();//结果为100
+			 
+			 
+		</script>
+	</body>
+</html>

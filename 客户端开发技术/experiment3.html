@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>实验三</title>
+	</head>
+	<body>
+		<script>
+			// 1.思考运行结果并运行，思考最后一段代码结果的原因
+				//219971125冉钱宝
+				let a1, b1, c1 = [1, 2, 3, ];
+				console.log(a1, b1, c1);
+				//结果为：undefined undefined [1, 2, 3,]
+				//原因：a1,b1没有赋值  c1赋值数组
+				let [a2, b2, c2] = [1, 2, 3, ];
+				console.log(a2, b2, c2);
+				//结果为：1,2,3
+				//原因：分别赋值，a2赋值1，b2赋值2，c2赋值3
+				let [a3, b3, c3] = [1, , 3, ];
+				console.log(a3, b3, c3);
+				//结果为：1，undefined，3
+				//原因：b3赋值空元素，被忽略，输出为undefined
+				let [a4, b4] = [1];
+				console.log(a4, b4);
+				//结果为：1，undefined
+				//原因：数组只有元素1，赋值给a4后，b4为空
+				let {y:a5,b5} = {x: 1,y: 2};
+				console.log(a5, b5);
+				//结果为：2，undefined
+				//原因：对象{x: 1, y: 2}中的属性y的值赋给变量a5，将属性b5的值也赋给变量b5。
+				let {a6, b6} = 123;
+				console.log(a6, b6);
+				//结果为：undefined，undefined
+				//原因：数字不是一个对象，无法解构赋值
+				
+				
+			//2.运行代码，写结果
+			//219971125冉钱宝
+				let set = new Set();
+				//创建一个空的Set集合
+				set.add( 1);
+				//将元素1添加到集合中
+				set.add(2);
+				//将元素2添加到集合中
+				set.add( 3);
+				//将元素3添加到集合中
+				set.delete(2);
+				//从集合中删除元素2
+				let i = set.values();
+				//获取一个迭代器对象i来遍历集合
+				console.log(i.next());
+				//结果：{ value: 1, done: false }
+				//原因：第一次调用next()方法返回第一个元素1，done属性为false
+				console.log(i.next( ));
+				//结果：{ value: 3, done: false }
+				//原因：第二次调用next()方法返回第二个元素3，done属性为false
+				console.log(i.next());
+				//结果：{ value: undefined, done: true }
+				//原因：第三次调用next()方法返回undefined表示集合中没有元素可供迭代，done属性为true表示迭代器已完成。
+
+
+			//3.运行代码，为什么没有输出的原因
+			//219971125冉钱宝
+				let map = new Map();
+				map.set(1,"a");
+				map.set(2,"b");
+				map.set(3,"c");
+				map.set(4,"d");
+				//创建一个新的Map对象并向其中添加键值对
+				
+				//使用for循环遍历Map并输出值
+				for (let i = 1; i <= map.size; i++) {
+				console. log(map.get(i));
+				}
+				//结果：输出结果：a b c d
+				
+				//使用forEach方法遍历Map并输出值
+				map.forEach(function(value,key) {
+				console.log(value);
+				});
+				//结果：输出结果：a b c d
+				
+				//使用for...of循环遍历Map的值并输出
+				for(let v of map.values()){
+				console.log(v);
+				}
+				//结果：输出结果：a b c d
+				
+				//使用for...in循环遍历Map的属性并输出
+				for( var prop in map){
+				console.log(prop);
+				}
+				//无输出结果原因：for...in循环遍历的是对象的属性名，而Map对象是一种特殊的数据结构，
+				//它的属性并不是通过点(.)访问的，因此for...in循环无法正确遍历Map对象的键值对，所以无法输出。
+			
+			
+			//4.运行结果并验证，说明原因
+			//219971125冉钱宝
+				let arr1 =[1,2,3];
+				let arr2 = arr1;
+				//arr2引用arr1所引用的数组
+				console.log( arr1==arr2);
+				//结果：ture
+				//原因：arr1和arr2引用同一个数组。
+				
+				let arr3 = [ ...arr1];
+				//创建了一个新的数组arr3
+				console.log( arr1==arr3);
+				//结果：false
+				//原因：arr1和arr3包含相同的元素
+				//但它们引用的是不同的数组对象，arr3是一个新的数组
+				
+				
+			//5.用箭头函数改写代码，写出改写后的代码并验证
+				
+			// 改写后:
+					let arr4 = [1, 2, 3];
+					arr4.forEach((v, k) => {
+					    console.log(v);
+					});
+				//结果：1, 2, 3
+				//原理：使用箭头函数来替代forEach方法中的匿名函数
+				
+				
+			//6.运行代码，写出代码的作用
+				Array.of(1,2,3).filter(i => i > 1).forEach(i => console.log(i));
+				//结果：2 3
+				//作用：1.创建一个包含元素1、2、3的数组，并
+				//2.使用filter方法过滤出大于1的元素。
+				//3.使用forEach方法遍历筛选后的数组
+				//4.打印出大于1的元素
+				
+				let fib = n => n > 1 ? fib(n - 1) + fib(n - 2) : n;
+				//原因：定义一个箭头函数fib计算斐波那契数列的第n个数字。
+				//n>1，则返回fib(n - 1) + fib(n - 2)否则返回n
+				
+				
+			//7.使用class和extends实现关系，编写代码实现并测试
+			//219971125冉钱宝
+				//要求：Animal的class中有name属性和shount()方法，Dog的classextendsAnimal，并含有age属性和eat()方法
+					class Animal {
+					//Animal类
+					    constructor(name) {
+					        this.name = name;
+					    }
+					//name属性
+					    shout() {
+					        console.log(`${this.name} is shouting`);
+					    }
+					//shout方法
+					}
+					
+					class Dog extends Animal {
+					//Dog类继承Animal类
+					    constructor(name, age) {
+					        super(name);
+					        this.age = age;
+					    }
+					//继承name属性，自己的age属性
+					    eat() {
+					        console.log(`${this.name} is eat`);
+					    }
+					}
+					//eat方法
+					// 创建一个Dog实例
+					let myDog = new Dog('ranqianbao', 22);
+					
+					// 测试方法
+					myDog.shout(); 
+					// 结果：ranqianbao is shouting
+					myDog.eat();   
+					// 结果：ranqianbao is eat
+		</script>
+	</body>
+</html>

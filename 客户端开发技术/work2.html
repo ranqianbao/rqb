@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>创建函数和使用</title>
+	</head>
+	<body>
+		<script>
+			
+			//函数声明提升
+			//定义式函数，定义函数会预加载，函数调用在函数声明之前之后都可以
+			// // 定义式
+			// function hello(){
+			// 	console.log("hello");
+			// }
+			// //调用函数
+			// hello();
+			
+			//结果为hello
+			
+			
+			//变量式函数调用必须在函数声明之后，否则会提示xx not is a function
+			// //变量式
+			// var hello1 = function (){
+			// 	console.log("hello1!");
+			// }
+			// var result = sum(3,4);
+			// console.log(result);
+			// function sum(num1,num2){
+			// 	return num1+num2;
+			// }
+			
+			//结果为7
+			
+			
+			//在js中允许定义重名函数，但后定义的函数会覆盖先定义的函数
+			// function fun(){
+			// 	console.log("hao");
+			// }
+			// function fun(){
+			// 	console.log("buhao");
+			// }
+			// fun();
+			
+			//结果为buhao
+			
+			
+			// var fun1 = function(){
+			// 	console.log("abc");
+			// }
+			// function fun1(){
+			// 	console.log("123");
+			// }
+			// fun1();
+			
+			//结果为abc
+			
+			
+			//全局变量在函数内外都可以使用，在关闭网页之后消失   局部变量只能在函数内使用，在函数执行后消失
+			//省略var之后，函数默认为全局变量
+			
+			//变量声明提升
+			//js的函数定义(声明)会被自动升到函数体最上面
+			// function test(){
+			// 	var a = "hello";
+			// 	var c = a + ""+b;
+			// 	console.log(c);
+			// 	var b = "js";
+			// }
+			// test();
+			
+			//结果为hello underfind
+			
+			
+			//函数变种IIFE  立即调用的函数表达式  可以减少全局变量的使用、
+			//(function(形参){})(实参表达式)
+			
+			//严格模式
+			//在代码的第一行(脚本或者函数)写上   'use strict'
+			
+			
+		</script>
+	</body>
+</html>

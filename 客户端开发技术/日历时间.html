@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>时间钟</title>
+</head>
+<body>
+    <h1 id="clock"></h1>
+
+    <script>
+		//创建事件
+        function updateTime() {
+			//创建对象
+            const now = new Date();
+			//获取时，转化为String类型，并保证为两位，不足则左侧补0
+            const hours = String(now.getHours()).padStart(2, '0');
+			//获取分，转化为String类型，并保证为两位，不足则左侧补0
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+			//获取秒，转化为String类型，并保证为两位，不足则左侧补0
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+			//获取ID为clock的元素，文本输出结果
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        //window的serInterval间隔一秒实现事件
+        setInterval(updateTime, 1000); 
+		
+    </script>
+</body>
+</html>

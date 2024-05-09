@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery选择器与DOM操作</title>
+	</head>
+	<body>
+		<!-- 引入jquery库 -->
+		<script src="http://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js">
+			// $("#test").hide()   //找到id为test的元素并隐藏
+			// $("p").hide()   //找到所有p标签并隐藏
+			// jquery的语法  $(要查询的html元素).要进行的操作()
+			// jquery对象无法使用DOM对象的任何方法，同养DOM对象也不能使用jquery里的任何方法
+			
+			// $("1 2")   找到1的后代2及2的后代
+			//$("1>2")   找到1的儿子2
+			//$("1+2") 找到紧挨1的2标签(从后往前找)
+			//$("1~2") 找到与1同辈的2标签
+			
+			//$("p:odd")  找到下标为奇数个p标签（下标从0开始）
+			//$("p:eq(x)") 找到第x个p标签
+			
+			//属性操作
+			//html() 设置或返回所选元素的文本
+			//css("1","2") 改变样式1的2
+			
+			//内部操作
+			//$("1").append("2") 在1的内部尾部加上元素2   prepend  在前面加
+			
+			//包裹操作
+			//$("1").wrap("2")  用2包裹1    
+		</script>
+		
+	</body>
+</html>

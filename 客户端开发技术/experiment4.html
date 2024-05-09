@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实验4-使用web制作广告页面</title>
+	<style>
+		.ad-container 
+		{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100px;
+			background-color: #f0f0f0;
+			z-index: 9999;
+			display: flex;
+			justify-content: space-between;
+			padding: 10px;
+		}
+		.popup-ad
+		{
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			width: 200px;
+			height: 100px;
+			background-color: #f0f0f0;
+			display: none;
+			z-index: 9999;
+		}
+	</style>
+</head>
+<body>
+	<div class="ad-container">
+		<div class="left-ad">左侧对联广告</div>
+		<div class="right-ad">右侧对联广告</div>
+	</div>
+	<div class="popup-ad" id="popupAd">右下角弹窗广告</div>
+
+<script>
+  // 页面加载完成即出现左右对联广告
+  window.onload = function() {
+    document.querySelector('.left-ad').innerText = '这里是左侧对联广告';
+    document.querySelector('.right-ad').innerText = '这里是右侧对联广告';
+  };
+
+  // 广告能够关闭
+  document.querySelector('.left-ad').addEventListener('click', function() {
+    this.style.display = 'none';
+  });
+  document.querySelector('.right-ad').addEventListener('click', function() {
+    this.style.display = 'none';
+  });
+
+  // 制作右下角弹窗广告
+  const popupAd = document.getElementById('popupAd');
+  popupAd.innerText = '这里是右下角弹窗广告';
+  popupAd.style.display = 'block';
+
+  // 弹窗广告具有缓慢出现的动画效果
+  let opacity = 0;
+  const fadeIn = setInterval(function() {
+    if (opacity < 1) {
+      opacity += 0.1;
+      popupAd.style.opacity = opacity;
+    } else {
+      clearInterval(fadeIn);
+    }
+  }, 1000); // 每隔1秒透明度增加0.1
+
+  // 广告能够关闭
+  popupAd.addEventListener('click', function() {
+    this.style.display = 'none';
+  });
+</script>
+</body>
+</html>

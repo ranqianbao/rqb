@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ES新特性</title>
+	</head>
+	<body>
+		<script>
+			// 新特性变量
+			
+			//1.let 声明变量  类似var  但只能在let所在的代码块内有效，实现了块级作用域
+			//2.没有变量提升，必须在变量使用之前定义，否则报错
+			//3.同一个作用域内，不允许重复定义变量
+			
+			//const 声明常量  和let相同，只在声明的块级作用域邮箱
+			
+			//Symbol  新增加的原始数据类型，表示独一无二的值
+				let a = Symbol("abc");
+				let b = Symbol("abc");
+				console.log(a==b,typeof a,typeof b);
+				
+			//变量的解构赋值   从数组和对象中提取值，对变量进行赋值
+				//交换俩变量的值
+				let x = 1;
+				let y = 2;
+				[x,y] = [y,x];
+				console.log(x,y);
+				
+				//从函数返回多个值
+				function fun() {
+					return [1, 2, 3];
+				}
+				let [d, e, f] = fun();
+				
+				//快速提取对象的数据
+				let jsonData = {
+					id:1,
+					name:"蛇姐",
+					data:["live","辛苦了哦"]
+				};
+				let {id,name,data} = jsonData;
+				console.log(id,name,data);
+				
+			//新存储结构   
+			//Set和Map
+			// Set.prototype.add(value) //添加某个值,返回Set结构本身
+			// Map.prototype.set(key,value)//添加键值对，赶回Map结构本身
+			// Map.prototype.get(key)//通过键获取值，找不到返回underfined
+			
+			//Iterator(遍历器)
+			//为各种数据结构提供统一的访问接口
+			//Array,Set,Map    String   TypedArray    arguments对象，  NodeList对象
+			
+			//for...of 遍历所有数据结构的统一的方法
+				let arr = [1,2,3]
+				for(let temp of arr){
+					console.log(temp)
+				}
+				
+			//新扩展
+				//用反引号(`)标识。他可以当做普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量
+				//模板字符串的变量使用${}表示
+				let name1 = "张飞";
+				let str =`你好,${name1}`;
+				console.log(str);
+				
+				//普通字符串
+				let name2 = "冉钱宝";
+				let data2 = "二";
+				//字符串嵌入变量
+				let jieguo = `你好，${name2},今天是星期${data2}`;
+				console.log(jieguo);
+				
+				//扩展运算符
+				//三个点(...),将一个数组转为用逗号隔开的参数序列
+				console.log(...[1,2,3]);
+				
+				//用于函数调用，形式为...参数名，称为rest参数
+				function fun1(x,y,...args) {
+					console.log(args,x+y+args[0]);
+				}
+				fun1(1,2,4,5,6);
+				
+			//箭头函数
+				//函数体多于一条语句的时候
+				var fun = num =>num;
+				// 等同于
+				// function fun(num) {
+				// 	return num;
+				// }
+				
+				//简化回调函数
+		</script>
+	</body>
+</html>
